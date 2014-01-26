@@ -1,6 +1,6 @@
 "use strict";
 
-var config = require(process.env.CONFIG || "./config/example.js"),
+var config = require(process.env.CONFIG || "/etc/wp-sendmail.js"),
     log = require('npmlog'),
     net = require('net'),
     createMailer = require("./lib/mailer").createMailer,

@@ -11,7 +11,7 @@ This does not work in Windows.
 ## Usage
 
 ```
-npm install -g wp-sendmail
+sudo npm install --unsafe-perm -g wp-sendmail
 ```
 
 **Step 1**
@@ -22,16 +22,9 @@ Edit your php.ini and set `sendmail_path` to `/bin/env wp-sendmail`
 
 Run the checker server
 
-`CONFIG=/path/to/config wp-sendmaild`
+`wp-sendmaild`
 
-Check [config/example.js] for an example (this is also the default config file to be loaded).
-
-If you do not specify config file, the following environment variables can be used:
-
-  * **SMTP** target SMTP info (*"smtp://user:pass@host:port"*)
-  * **MYSQL** WordPress database info (*"mysql://user:host@host/db"*)
-  * **PREFIX** WordPress table prefix (*"wp_"*)
-  * **DEBUG** if "true" then outputs SMTP data to console
+Config file resides in */etc/wp-sendmail.js* (this is why you need to run `npm install` as root)
 
 Config file should be readable only to the user that is used for running the server or for root, if uid/gid values are used to downgrade the server.
 

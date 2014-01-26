@@ -2,6 +2,8 @@
 
 Sendmail drop in replacement for WordPress.
 
+By default a WordPress blog should be able to send e-mails **only** to registered users and to the admin and not to arbitrary e-mail addresses.
+
 WordPress uses the default `mail` command for PHP which sends e-mails to the `sendmail` command. This projects emulates `sendmail` but checks all recipients before sending the message to a selected SMTP server. If a recipient can not be found from the users table, the message is not delivered.
 
 This does not work in Windows.

@@ -2,6 +2,7 @@
 
 var config = require(process.env.CONFIG || "./config/example.js"),
     net = require("net"),
+    log = require('npmlog'),
     client = net.createConnection(config.port),
     buffer = [],
     bufferlen = 0,
@@ -28,7 +29,7 @@ process.stdin.on("end", function(){
 });
 
 client.on("error", function(err){
-    console.log(err.message);
+    log.error("client", err.message);
     process.exit(1);
 });
 

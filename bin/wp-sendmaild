@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var cluster = require('cluster'),
+    log = require("npmlog"),
     numCPUs = 1;
 
 if(cluster.isMaster){
@@ -11,7 +12,7 @@ if(cluster.isMaster){
     }
 
     cluster.on('exit', function(worker) {
-        console.log('worker %s died', worker.process.pid);
+        log.warn("cluster", 'Worker %s died', worker.process.pid);
         setTimeout(function(){
             cluster.fork();    
         }, 5000);
@@ -19,6 +20,7 @@ if(cluster.isMaster){
 
 }else{
 
+    log.info("cluster", "Started server instance");
     require("../server");
 
 }

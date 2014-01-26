@@ -1,6 +1,6 @@
 {
   "name": "wp-sendmail",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "sendmail drop-in replacement for WordPress - Only send e-mails to addresses that can be found from WordPress users table",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
   "dependencies": {
     "mimelib": "~0.2.14",
     "simplesmtp": "~0.3.18",
-    "mysql": "~2.0.1"
+    "mysql": "~2.0.1",
+    "npmlog": "0.0.6"
   },
   "devDependencies": {
     "nodeunit": "~0.8.4"

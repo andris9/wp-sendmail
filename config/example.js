@@ -3,9 +3,12 @@ var smtp = require("url").parse(process.env.SMTP || "");
 
 module.exports = {
     
-    port: 3412,
+    port: 7914,
     
     keepBCC: false,
+
+    uid: "nobody",
+    gid: "nogroup",
 
     smtp:{
         host: smtp.hostname || "localhost",
@@ -17,7 +20,7 @@ module.exports = {
             } : false,
             secureConnection: smtp.protocol == "smtps:",
 
-            debug: true
+            debug: !!process.env.DEBUG && ["0", "false"].indexOf(process.env.DEBUG.toLowerCase().trim()) < 0
         }
     },
 

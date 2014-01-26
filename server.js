@@ -1,13 +1,11 @@
 "use strict";
 
-var config = require("./config/" + (process.env.NODE_ENV || "development") + ".js"),
+var config = require(process.env.CONFIG || "./config/example.js"),
     net = require('net'),
     createMailer = require("./lib/mailer").createMailer,
     server;
 
 server = net.createServer(function(socket){
-    console.log('Client connected from %s', socket.remoteAddress);
-
     var mailer = createMailer();
 
     socket.on('error', function(err) {
@@ -27,7 +25,6 @@ server = net.createServer(function(socket){
     });
 
     socket.on('end', function() {
-        console.log('Client closed connection');
         mailer.send();
     });
 });
@@ -38,5 +35,23 @@ server.on("error", function(err){
 });
 
 server.listen(config.port, function() { //'listening' listener
-    console.log('Server bound to port %s', config.port);
+    console.log('Server bound to %s', config.port);
+    if(config.gid){
+        try{
+            process.setgid(config.gid);
+            console.log("Changed GID to %s", config.gid);
+        }catch(E){
+            console.log("Error: Failed changing GID to %s", config.gid);
+            console.log(E);
+        }
+    }
+    if(config.uid){
+        try{
+            process.setuid(config.uid);
+            console.log("Changed UID to %s", config.uid);
+        }catch(E){
+            console.log("Error: Failed changing UID to %s", config.uid);
+            console.log(E);
+        }
+    }
 });

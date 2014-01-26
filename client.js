@@ -1,6 +1,6 @@
 "use strict";
 
-var config = require("./config/" + (process.env.NODE_ENV || "development") + ".js"),
+var config = require(process.env.CONFIG || "./config/example.js"),
     net = require("net"),
     client = net.createConnection(config.port),
     buffer = [],

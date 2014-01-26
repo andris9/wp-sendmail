@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var cluster = require('cluster'),
+    numCPUs = 1;
+
+if(cluster.isMaster){
+  
+    // Fork workers.
+    for (var i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', function(worker) {
+        console.log('worker %s died', worker.process.pid);
+        setTimeout(function(){
+            cluster.fork();    
+        }, 5000);
+    });
+
+}else{
+
+    require("../server");
+
+}

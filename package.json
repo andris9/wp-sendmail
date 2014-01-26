@@ -1,0 +1,27 @@
+{
+  "name": "wp-sendmail",
+  "version": "0.1.0",
+  "description": "sendmail drop-in replacement for WordPress - Only send e-mails to addresses that can be found from WordPress users table",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "keywords": [
+    "wordpress",
+    "sendmail"
+  ],
+  "bin": {
+    "wp-sendmail": "./bin/wp-sendmail",
+    "wp-sendmaild": "./bin/wp-sendmaild"
+  },
+  "author": "Andris Reinman",
+  "license": "MIT",
+  "dependencies": {
+    "mimelib": "~0.2.14",
+    "simplesmtp": "~0.3.18",
+    "mysql": "~2.0.1"
+  },
+  "devDependencies": {
+    "nodeunit": "~0.8.4"
+  }
+}

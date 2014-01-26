@@ -3,7 +3,7 @@ var smtp = require("url").parse(process.env.SMTP || "");
 
 module.exports = {
     
-    port: 7914,
+    port: 7914, // do not change - wp-sendmail can not read the config file
     
     keepBCC: false,
 

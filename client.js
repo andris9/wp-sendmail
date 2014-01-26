@@ -1,9 +1,9 @@
 "use strict";
 
-var config = require(process.env.CONFIG || "/etc/wp-sendmail.js"),
+var port = 7914,
     net = require("net"),
     log = require('npmlog'),
-    client = net.createConnection(config.port),
+    client = net.createConnection(port),
     buffer = [],
     bufferlen = 0,
     connected = false,

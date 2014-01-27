@@ -1,6 +1,6 @@
 {
   "name": "wp-sendmail",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "sendmail drop-in replacement for WordPress - Only send e-mails to addresses that can be found from WordPress users table",
   "main": "index.js",
   "scripts": {
